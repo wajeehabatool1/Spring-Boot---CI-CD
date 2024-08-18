@@ -1,0 +1,80 @@
+/* Basic Reset */
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+/* Body and Header */
+body {
+    font-family: 'Arial', sans-serif;
+    background: linear-gradient(to right, #ff7e5f, #feb47b); /* Gradient background */
+    color: #343a40;
+    line-height: 1.6;
+}
+
+header {
+    background-color: rgba(255, 255, 255, 0.8);
+    color: #343a40;
+    text-align: center;
+    padding: 1rem 0;
+}
+
+header h1 {
+    font-size: 2.5rem;
+    margin: 0;
+}
+
+/* Main Content */
+main {
+    padding: 2rem;
+    display: flex;
+    justify-content: center; /* Center horizontally */
+    align-items: center; /* Center vertically */
+    min-height: 80vh; /* Adjust height to fill most of the viewport */
+}
+
+.starter-template {
+    background: rgba(255, 255, 255, 0.9);
+    padding: 2rem;
+    border-radius: 10px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+    display: flex; /* Use flexbox */
+    flex-direction: column; /* Stack items vertically */
+    justify-content: center; /* Center items vertically */
+    align-items: center; /* Center items horizontally */
+    width: 100%; /* Make sure it takes full width */
+    max-width: 600px; /* Set a max-width to control size */
+    margin: 0 auto; /* Center horizontally */
+}
+
+.starter-template h1 {
+    color: #ff6f61;
+    margin-bottom: 1rem;
+    text-align: center; /* Ensure text alignment is center */
+}
+
+.starter-template p {
+    color: #495057;
+    text-align: center; /* Ensure text alignment is center */
+}
+
+/* Decorative Element */
+.decorative-element {
+    width: 100px;
+    height: 100px;
+    background: #ff6f61; /* Color for the decorative element */
+    border-radius: 50%; /* Make it circular */
+    margin: 0 auto 1rem; /* Center and space out */
+}
+
+/* Footer */
+footer {
+    background-color: rgba(255, 255, 255, 0.8);
+    color: #343a40;
+    text-align: center;
+    padding: 1rem 0;
+    position: fixed;
+    width: 100%;
+    bottom: 0;
+}
