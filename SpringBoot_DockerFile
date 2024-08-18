@@ -1,0 +1,30 @@
+# multi stage Docker File
+
+# Stage 1: Build the application
+FROM maven:3.9.2-eclipse-temurin-17 AS build
+
+# Set the working directory inside the container
+WORKDIR /app
+
+# Copy the pom.xml and source code
+COPY pom.xml .
+COPY src ./src
+
+# Build the application (includes downloading dependencies and packaging)
+RUN mvn clean package
+
+
+# Stage 2: Create a lightweight image for running the application
+FROM eclipse-temurin:17-jdk-alpine
+
+# Set the working directory inside the container
+WORKDIR /app
+
+# Copy the Spring Boot JAR file from the previous stage
+COPY --from=build /app/target/spring-boot-application.jar app.jar
+
+# Expose the port that the Spring Boot application runs on
+EXPOSE 8080
+
+# Run the Spring Boot application
+ENTRYPOINT ["java", "-jar", "app.jar"]
