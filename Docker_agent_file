@@ -1,0 +1,6 @@
+# This is a docker agent file , will be used in this project to run our jenkins pipeline
+FROM maven:3.8.6-jdk-11-slim
+
+# Update the package list and install git, Docker, curl, and unzip in one go
+RUN apt-get update && apt-get install -y git docker.io curl unzip && apt-get clean
+
