@@ -51,10 +51,7 @@ pipeline {
         }
         steps {
             withCredentials([string(credentialsId: 'github', variable: 'GITHUB_TOKEN')]) {
-                sh 'git --version'
-                sh 'pwd'
-                sh 'ls -la'
-                 sh 'ls -la manifest'
+                dir('Spring-Boot-CI-CD'){
                 sh '''
                     git config user.email "wajeehabatool2021@gmail.com"
                     git config user.name "wajeeha batool"
@@ -64,6 +61,7 @@ pipeline {
                     git commit -m "Update deployment image to version ${BUILD_NUMBER}"
                     git push https://${GITHUB_TOKEN}@github.com/${GIT_USER_NAME}/${GIT_REPO_NAME} HEAD:main
                 '''
+               }
             }
         }
     }
