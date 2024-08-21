@@ -9,7 +9,7 @@ pipeline {
     stage('Checkout') {
       steps {
         sh 'echo passed'
-        git branch: 'main', url: 'https://github.com/wajeehabatool1/Spring-Boot-CI-CD.git'
+        //git branch: 'main', url: 'https://github.com/wajeehabatool1/Spring-Boot-CI-CD.git'
       }
     }
     stage('Build and Test') {
@@ -52,6 +52,9 @@ pipeline {
         steps {
             withCredentials([string(credentialsId: 'github', variable: 'GITHUB_TOKEN')]) {
                 dir('Spring-Boot-CI-CD'){
+                  sh 'pwd'
+                  sh 'ls -la'
+                   sh 'ls -la manifest'
                 sh '''
                     git config user.email "wajeehabatool2021@gmail.com"
                     git config user.name "wajeeha batool"
