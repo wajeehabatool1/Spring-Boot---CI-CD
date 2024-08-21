@@ -1,6 +1,22 @@
-# This is a docker agent file , will be used in this project to run our jenkins pipeline
-FROM maven:3.8.6-jdk-11-slim
+# Base image with Maven
+FROM maven:3.9.2-eclipse-temurin-17
+# Install Docker CLI
+USER root
+RUN apt-get update && \
+    apt-get install -y \
+    apt-transport-https \
+    ca-certificates \
+    curl \
+    gnupg && \
+  curl -fsSL https://download.docker.com/linux/debian/gpg | gpg --dearmor -o /usr/share/keyrings/docker-archive-keyring.gpg && \
+    echo "deb [arch=amd64 signed-by=/usr/share/keyrings/docker-archive-keyring.gpg] https://download.docker.com/linux/debian bullseye stable" | tee /etc/apt/sources.list.d/docker.list > /dev/null && \
+    apt-get update && \
+    apt-get install -y docker-ce-cli && \
+    apt-get clean && \
+    rm -rf /var/lib/apt/lists/*
+# Set the working directory inside the container
+WORKDIR /app
 
-# Update the package list and install git, Docker, curl, and unzip in one go
-RUN apt-get update && apt-get install -y git docker.io curl unzip && apt-get clean
+# Default command (can be overridden by Jenkins)
+CMD ["mvn", "--version"]
 
