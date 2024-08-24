@@ -21,6 +21,17 @@ docker build -f SpringBoot_DockerFile -t spring-boot-app .
 ```bash
 docker run -p 8080:8080 spring-boot-app
 ```
+## Docker Agent File
+
+The Jenkins pipeline will run inside this Docker container to optimize resource usage. Once the pipeline is complete, the container will be removed. This Docker file includes all necessary dependencies, such as Maven, JDK and Docker CLI.
+
+**Note:** The built image from this Dockerfile is already used in the Jenkins pipeline and is pushed to Docker Hub.
+
+#### Dockerfile Overview
+
+- **Base Image:** Uses Maven 3.9.2 with Eclipse Temurin JDK 17.
+- **Docker CLI Installation:** The image includes Docker CLI, installed via the `apt-get` package manager.
+- **Working Directory:** Sets the working directory to `/app`.
 
 
 
